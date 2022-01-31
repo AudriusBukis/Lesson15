@@ -7,8 +7,8 @@ if you want that this program run you have to change several files
 2. in Mail.cs 
  
   enter yours gmail address and password 
-  string sendingEmailAddress = "<yours email>"
-  string emailaddressPassword = "<yours password>"
+  string sendingEmailAddress = "yours email"
+  string emailaddressPassword = "yours password"
  
 3.Note.
  
