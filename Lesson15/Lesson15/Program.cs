@@ -6,7 +6,7 @@ namespace Lesson15
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Lesson 15 task 1");
         }
     }
 }
