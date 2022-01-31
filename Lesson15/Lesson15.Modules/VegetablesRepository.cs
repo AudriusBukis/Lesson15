@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,8 +27,8 @@ namespace Lesson15.Modules
                 string[] tepm = alllinesFromfile[i].Split(",");
                 vegetables.Name = tepm[0];
                 vegetables.Barcode = Convert.ToInt32(tepm[1]);
-                vegetables.Weight = Convert.ToDouble(tepm[2]);
-                vegetables.Price = Convert.ToDouble(tepm[3]);
+                vegetables.Weight = Convert.ToDouble(tepm[2], CultureInfo.InvariantCulture);
+                vegetables.Price = Convert.ToDouble(tepm[3], CultureInfo.InvariantCulture);
                 vegetables.Fibers = tepm[4];
                 listVegetables.Add(vegetables);
             }

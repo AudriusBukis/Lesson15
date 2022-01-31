@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,8 +27,8 @@ namespace Lesson15.Modules
                 string[] tepm = alllinesFromfile[i].Split(",");
                 meat.Name = tepm[0];
                 meat.Barcode = Convert.ToInt32(tepm[1]);
-                meat.Weight = Convert.ToDouble(tepm[2]);
-                meat.Price = Convert.ToDouble(tepm[3]);
+                meat.Weight = Convert.ToDouble(tepm[2], CultureInfo.InvariantCulture);
+                meat.Price = Convert.ToDouble(tepm[3], CultureInfo.InvariantCulture);
                 meat.Proteins = tepm[4];
                 listMeat.Add(meat);
             }
