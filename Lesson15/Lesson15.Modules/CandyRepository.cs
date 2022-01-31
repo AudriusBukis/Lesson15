@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,8 +27,8 @@ namespace Lesson15.Modules
                 string[] tepm = alllinesFromfile[i].Split(",");
                 candy.Name = tepm[0];
                 candy.Barcode = Convert.ToInt32(tepm[1]);
-                candy.Weight = Convert.ToDouble(tepm[2]);
-                candy.Price = Convert.ToDouble(tepm[3]);
+                candy.Weight = Convert.ToDouble(tepm[2], CultureInfo.InvariantCulture);
+                candy.Price = Convert.ToDouble(tepm[3], CultureInfo.InvariantCulture);
                 candy.SugarAmount = tepm[4];
                 listCandy.Add(candy);
             }
