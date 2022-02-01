@@ -1,9 +1,4 @@
 ﻿using Lesson15.Modules;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Lesson15.UnitTests
@@ -21,7 +16,7 @@ namespace Lesson15.UnitTests
             cart.ShoppCart.Add(new ShoppingCart("Mars", 45846335, "100 g", 8.5));
             double total = 0;
 
-            total = cart.GenerateCheck(cart.ShoppCart);
+            total = ShoppingCartRepository.GenerateCheck(cart.ShoppCart);
 
             Assert.Equal(15.3, total);
            

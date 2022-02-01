@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lesson15.Modules
 {
@@ -49,11 +44,11 @@ namespace Lesson15.Modules
                 {
                     break;
                 }
-                else if (Int32.TryParse(inputString, out int indexNumber))
+                else if (Int32.TryParse(inputString, out int inputNumber))
                 {
-                    if (indexNumber >= 0 && indexNumber < meats.MeatList.Count)
+                    if (inputNumber >= 1 && inputNumber <= meats.MeatList.Count)
                     {
-                        cart.AddToCart(meats.MeatList[indexNumber]);
+                        cart.AddToCart(meats.MeatList[inputNumber-1]);
                         Console.WriteLine("Product added to cart");
                         PressEnterContinue();
                         continue;
@@ -86,11 +81,11 @@ namespace Lesson15.Modules
                 {
                     break;
                 }
-                else if (Int32.TryParse(inputString, out int indexNumber))
+                else if (Int32.TryParse(inputString, out int inputNumber))
                 {
-                    if (indexNumber >= 0 && indexNumber < candys.CandyList.Count)
+                    if (inputNumber >= 1 && inputNumber <= candys.CandyList.Count)
                     {
-                        cart.AddToCart(candys.CandyList[indexNumber]);
+                        cart.AddToCart(candys.CandyList[inputNumber - 1]);
                         Console.WriteLine("Product added to cart");
                         PressEnterContinue();
                         continue;
@@ -122,11 +117,11 @@ namespace Lesson15.Modules
                 {
                     break;
                 }
-                else if (Int32.TryParse(inputString, out int indexNumber))
+                else if (Int32.TryParse(inputString, out int inputNumber))
                 {
-                    if (indexNumber >= 0 && indexNumber < drinks.DrinksList.Count)
+                    if (inputNumber >= 1 && inputNumber <= drinks.DrinksList.Count)
                     {
-                        cart.AddToCart(drinks.DrinksList[indexNumber]);
+                        cart.AddToCart(drinks.DrinksList[inputNumber - 1]);
                         Console.WriteLine("Product added to cart");
                         PressEnterContinue();
                         continue;
@@ -160,9 +155,9 @@ namespace Lesson15.Modules
                 }
                 else if (Int32.TryParse(inputString, out int indexNumber))
                 {
-                    if (indexNumber >= 0 && indexNumber < vegetables.VegetablesList.Count)
+                    if (indexNumber >= 1 && indexNumber <= vegetables.VegetablesList.Count)
                     {
-                        cart.AddToCart(vegetables.VegetablesList[indexNumber]);
+                        cart.AddToCart(vegetables.VegetablesList[indexNumber - 1]);
                         Console.WriteLine("Product added to cart");
                         PressEnterContinue();
                         continue;

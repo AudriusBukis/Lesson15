@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lesson15.Modules
 {
@@ -19,7 +16,7 @@ namespace Lesson15.Modules
         {
             foreach (var product in ShoppCart)
             {
-                Console.WriteLine($"No.{ShoppCart.IndexOf(product)} - {product}");
+                Console.WriteLine($"No.{ShoppCart.IndexOf(product)+1} - {product}");
             }
         }
         public void AddToCart(Vegetables product)
@@ -28,7 +25,7 @@ namespace Lesson15.Modules
             int barcode = product.Barcode;
             string amount = $"{product.Weight} kg";
             double price = product.Price;
-            ShoppingCart productItem = new ShoppingCart(name, barcode, amount, price);
+            var productItem = new ShoppingCart(name, barcode, amount, price);
             ShoppCart.Add(productItem);
         }
         public void AddToCart(Meat product)
@@ -37,7 +34,7 @@ namespace Lesson15.Modules
             int barcode = product.Barcode;
             string amount = $"{product.Weight} kg";
             double price = product.Price;
-            ShoppingCart productItem = new ShoppingCart(name, barcode, amount, price);
+            var productItem = new ShoppingCart(name, barcode, amount, price);
             ShoppCart.Add(productItem);
         }
         public void AddToCart(Candy product)
@@ -46,7 +43,7 @@ namespace Lesson15.Modules
             int barcode = product.Barcode;
             string amount = $"{product.Weight * 1000} g";
             double price = product.Price;
-            ShoppingCart productItem = new ShoppingCart(name, barcode, amount, price);
+            var productItem = new ShoppingCart(name, barcode, amount, price);
             ShoppCart.Add(productItem);
         }
         public void AddToCart(Drinks product)
@@ -55,14 +52,14 @@ namespace Lesson15.Modules
             int barcode = product.Barcode;
             string amount = $"{product.Litters} l";
             double price = product.Price;
-            ShoppingCart productItem = new ShoppingCart(name, barcode, amount, price);
+            var productItem = new ShoppingCart(name, barcode, amount, price);
             ShoppCart.Add(productItem);
         }
 
-        public double GenerateCheck(List<ShoppingCart> cartItem)
+        public static double GenerateCheck(List<ShoppingCart> cartItem)
         {
-            FileWriterService cartToFile = new FileWriterService("CartCheck.txt");
-            List<string> templist = new List<string>();
+            var cartToFile = new FileWriterService("CartCheck.txt");
+            var templist = new List<string>();
             double totalPrice = 0;
             cartToFile.WriteAllText(templist.ToArray());
             cartToFile.AppendText($"date {DateTime.Today}");
@@ -73,7 +70,7 @@ namespace Lesson15.Modules
                 totalPrice += product.Price;
             }
             cartToFile.AppendText("----------------------------");
-            cartToFile.AppendText($"Total price to pay - {totalPrice} eu");
+            cartToFile.AppendText($"Total price to pay - {Math.Round(totalPrice, 2)} eu");
             return totalPrice;
         }
     }

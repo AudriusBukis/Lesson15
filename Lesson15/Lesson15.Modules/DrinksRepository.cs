@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lesson15.Modules
 {
     public class DrinksRepository
     {
-        FileReaderService Reader = new FileReaderService("DrinksList.csv");
+        readonly FileReaderService Reader = new ("DrinksList.csv");
         public List<Drinks> DrinksList { get; set; }
 
         public DrinksRepository()
@@ -19,27 +16,27 @@ namespace Lesson15.Modules
 
         private List<Drinks> ReadAllDrinksFile()
         {
-            var listDrinks = new List<Drinks>();
-            List<string> alllinesFromfile = Reader.GetAllLines();
-            for (int i = 0; i < alllinesFromfile.Count; i++)
+            var drinkProducts = new List<Drinks>();
+            List<string> allLinesFromFile = Reader.GetAllLines();
+            for (int i = 0; i < allLinesFromFile.Count; i++)
             {
                 var drinks = new Drinks();
-                string[] tepm = alllinesFromfile[i].Split(",");
-                drinks.Name = tepm[0];
-                drinks.Barcode = Convert.ToInt32(tepm[1]);
-                drinks.Litters = Convert.ToDouble(tepm[2], CultureInfo.InvariantCulture);
-                drinks.Price = Convert.ToDouble(tepm[3], CultureInfo.InvariantCulture);
-                drinks.Type = tepm[4];
-                listDrinks.Add(drinks);
+                string[] temp = allLinesFromFile[i].Split(",");
+                drinks.Name = temp[0];
+                drinks.Barcode = Convert.ToInt32(temp[1]);
+                drinks.Litters = Convert.ToDouble(temp[2], CultureInfo.InvariantCulture);
+                drinks.Price = Convert.ToDouble(temp[3], CultureInfo.InvariantCulture);
+                drinks.Type = temp[4];
+                drinkProducts.Add(drinks);
             }
 
-            return listDrinks;
+            return drinkProducts;
         }
         public void PrintAllList()
         {
             foreach (var drink in DrinksList)
             {
-                Console.WriteLine($"No.{DrinksList.IndexOf(drink)} - {drink}");
+                Console.WriteLine($"No.{DrinksList.IndexOf(drink)+1} - {drink}");
             }
         }
     }
