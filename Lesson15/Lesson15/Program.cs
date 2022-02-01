@@ -1,8 +1,5 @@
 ﻿using Lesson15.Modules;
 using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Net.Mail;
 
 namespace Lesson15
 {
@@ -10,16 +7,16 @@ namespace Lesson15
     {
         static double WalletSize;
         static bool HaveMoney;
-        static ShoppingCartRepository Cart = new ShoppingCartRepository();
+        private static readonly ShoppingCartRepository Cart = new();
 
         static void Main(string[] args)
         {
-            StoreRepository store = new StoreRepository();
+            var store = new StoreRepository();
 
-            CandyRepository candys = new CandyRepository();
-            MeatRepository meats = new MeatRepository();
-            DrinksRepository drinks = new DrinksRepository();
-            VegetablesRepository vegetables = new VegetablesRepository();
+            var candys = new CandyRepository();
+            var meats = new MeatRepository();
+            var drinks = new DrinksRepository();
+            var vegetables = new VegetablesRepository();
             bool isTrue = true;
             while (isTrue)
             {
@@ -117,7 +114,7 @@ namespace Lesson15
                                     store.ReturnToStore();
                                     break;
                                 case 6:
-                                    double totalPrice = Cart.GenerateCheck(Cart.ShoppCart);
+                                    double totalPrice = ShoppingCartRepository.GenerateCheck(Cart.ShoppCart);
                                     if (totalPrice > WalletSize)
                                     {
                                         Console.WriteLine("You do not have enough money");
@@ -127,8 +124,8 @@ namespace Lesson15
                                     }
                                     else
                                     {
-                                        Mail mail = new Mail();
-                                        mail.email_send();
+                                        var mail = new Mail();
+                                        Mail.EmailSend();
                                     }
                                     HaveMoney = false;
                                     store.ReturnToStore();

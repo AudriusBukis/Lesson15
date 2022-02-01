@@ -1,9 +1,4 @@
-﻿using Lesson15.Modules;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using Xunit;
 
 namespace Lesson15.UnitTests
@@ -36,7 +31,7 @@ namespace Lesson15.UnitTests
         [Fact]
         public void Test_If_Function_Returns_Corect_Values()
         {
-            bool neveMoney = false;
+            bool heveMoney = false;
             double walletSize = 0;
             // public (bool HeveMoney, double WalletSize) WelcomToStore()
             // {
@@ -47,7 +42,7 @@ namespace Lesson15.UnitTests
             if (Double.TryParse("-63.58", out double result))
                 {
                 //return (true, result);
-                neveMoney = true;
+                heveMoney = true;
                 walletSize = result;
             }
             else
@@ -55,11 +50,11 @@ namespace Lesson15.UnitTests
                 // Console.WriteLine("You entered not a number, press enter to continue");
                 // Console.ReadKey();
                 // return (false, 0);
-                neveMoney = false;
+                heveMoney = false;
                 walletSize = 0;
             }
             //}
-            Assert.True(neveMoney);
+            Assert.True(heveMoney);
             Assert.Equal(-63.58, walletSize);
 
 

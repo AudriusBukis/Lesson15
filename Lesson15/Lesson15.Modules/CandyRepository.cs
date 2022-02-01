@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lesson15.Modules
 {
     public class CandyRepository
     {
-        FileReaderService Reader = new FileReaderService("CandyList.csv");
+        readonly FileReaderService Reader = new("CandyList.csv");
         public List<Candy> CandyList { get; set; }
 
         public CandyRepository()
@@ -19,27 +16,27 @@ namespace Lesson15.Modules
 
         private List<Candy> ReadAllCandysFile()
         {
-            var listCandy = new List<Candy>();
-            List<string> alllinesFromfile = Reader.GetAllLines();
-            for (int i = 0; i < alllinesFromfile.Count; i++)
+            var candyProducts = new List<Candy>();
+            List<string> allLinesFromFile = Reader.GetAllLines();
+            for (int i = 0; i < allLinesFromFile.Count; i++)
             {
                 var candy = new Candy();
-                string[] tepm = alllinesFromfile[i].Split(",");
-                candy.Name = tepm[0];
-                candy.Barcode = Convert.ToInt32(tepm[1]);
-                candy.Weight = Convert.ToDouble(tepm[2], CultureInfo.InvariantCulture);
-                candy.Price = Convert.ToDouble(tepm[3], CultureInfo.InvariantCulture);
-                candy.SugarAmount = tepm[4];
-                listCandy.Add(candy);
+                string[] temp = allLinesFromFile[i].Split(",");
+                candy.Name = temp[0];
+                candy.Barcode = Convert.ToInt32(temp[1]);
+                candy.Weight = Convert.ToDouble(temp[2], CultureInfo.InvariantCulture);
+                candy.Price = Convert.ToDouble(temp[3], CultureInfo.InvariantCulture);
+                candy.SugarAmount = temp[4];
+                candyProducts.Add(candy);
             }
 
-            return listCandy;
+            return candyProducts;
         }
         public void PrintAllList()
         {
             foreach (var candy in CandyList)
             {
-                Console.WriteLine($"No.{CandyList.IndexOf(candy)} - {candy}");
+                Console.WriteLine($"No.{CandyList.IndexOf(candy)+1} - {candy}");
             }
         }
 

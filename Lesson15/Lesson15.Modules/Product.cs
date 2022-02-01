@@ -1,8 +1,7 @@
-﻿using System;
-
+﻿
 namespace Lesson15.Modules
 {
-    public class Product
+    public abstract class Product
     {
         public string Name { get; set; }
         public int Barcode { get;  set; }
